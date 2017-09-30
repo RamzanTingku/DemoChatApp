@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "296438644598",
+    "firebase_url": "https://demochatapp-a9ebe.firebaseio.com",
+    "project_id": "demochatapp-a9ebe",
+    "storage_bucket": "demochatapp-a9ebe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:296438644598:android:95f799c5cbccb0eb",
+        "android_client_info": {
+          "package_name": "com.example.ramzanullah.demochatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "296438644598-brilerpspk6hh5lquoosou9vuhtmt6g4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ramzanullah.demochatapp",
+            "certificate_hash": "dfac09706f2653332c7ccf7b13f7cc965f5c2ac9"
+          }
+        },
+        {
+          "client_id": "296438644598-su5ts5o2svscgrgj9iibps9t0utdkunv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ramzanullah.demochatapp",
+            "certificate_hash": "31df7d2dc983031f8e00efbc94ef6c7f480c5fe0"
+          }
+        },
+        {
+          "client_id": "296438644598-o4i2ubkg2fbjks2svkkoisuh204kc7bb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpOhj1Hh7jBYNapngnDivxgqZkrJDauYY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "296438644598-o4i2ubkg2fbjks2svkkoisuh204kc7bb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

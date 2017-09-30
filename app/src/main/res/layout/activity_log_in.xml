@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.ramzanullah.demochatapp.LogInActivity">
+
+
+    <include layout="@layout/app_bar"
+        android:id="@+id/sign_in_page_appbar"></include>
+
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="170dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:id="@+id/et_login_email"
+        android:hint="Enter your Email">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_login_email"
+        android:layout_alignParentStart="true"
+        android:id="@+id/et_login_pass"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:hint="Enter Password">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/sign_in"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:text="Sign In"
+        android:textAllCaps="false"
+        android:layout_below="@+id/et_login_pass"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign In your Account"
+        android:textColor="@android:color/black"
+        android:textSize="20dp"
+        android:layout_below="@+id/sign_in_page_appbar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        android:text="Don't have an account?"
+        android:layout_below="@+id/sign_in"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/go_signup_page"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Sign Up"
+        android:textAllCaps="false"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/go_signup_page"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:text="or Sign in with ..."></TextView>
+
+    <Button
+        android:id="@+id/google"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/textView3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/googleplus"/>
+
+
+</RelativeLayout>
