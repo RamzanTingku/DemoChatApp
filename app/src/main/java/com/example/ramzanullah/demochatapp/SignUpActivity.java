@@ -3,7 +3,6 @@ package com.example.ramzanullah.demochatapp;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -20,10 +19,8 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    private TextInputLayout nameET;
-    private TextInputLayout emailET;
-    private TextInputLayout passET;
-    private EditText nameT, emailT, passT;
+
+    private EditText nameET, emailET, passET;
     private Button singupBTN;
     private FirebaseAuth mAuth;
     private Toolbar toolbar;
@@ -42,31 +39,27 @@ public class SignUpActivity extends AppCompatActivity {
 
         progressDialog = new ProgressDialog(this);
 
-        nameET = (TextInputLayout) findViewById(R.id.et_name);
-        emailET = (TextInputLayout) findViewById(R.id.et_email);
-        passET = (TextInputLayout) findViewById(R.id.et_pass);
-        nameT = (EditText) findViewById(R.id.name);
-        emailT = (EditText) findViewById(R.id.email);
-        passT = (EditText) findViewById(R.id.password);
+        nameET = (EditText) findViewById(R.id.name);
+        emailET = (EditText) findViewById(R.id.email);
+        passET = (EditText) findViewById(R.id.password);
 
         singupBTN = (Button) findViewById(R.id.sign_up);
 
         singupBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name = nameET.getEditText().getText().toString();
-                String email = emailET.getEditText().getText().toString();
-                String pass = passET.getEditText().getText().toString();
-
+                String name = nameET.getText().toString();
+                String email = emailET.getText().toString();
+                String pass = passET.getText().toString();
 
                 if (name.isEmpty()){
-                    nameT.setError("This field must not be emplty");
+                    nameET.setError("This field must not be emplty");
                 }
                 else if (email.isEmpty()){
-                    emailT.setError("This field must not be emplty");
+                    emailET.setError("This field must not be emplty");
                 }
                 else if (pass.isEmpty()){
-                    passT.setError("This field must not be emplty");
+                    passET.setError("This field must not be emplty");
                 }
                 else if (!TextUtils.isEmpty(name) || !TextUtils.isEmpty(email) || !TextUtils.isEmpty(pass)){
                     progressDialog.setTitle("Registering User");
