@@ -29,6 +29,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 public class LogInActivity extends AppCompatActivity {
@@ -83,7 +84,7 @@ public class LogInActivity extends AppCompatActivity {
 
                 }else if (!TextUtils.isEmpty(email) || !TextUtils.isEmpty(pass)){
                     progressDialog.setTitle("Loing in User");
-                    progressDialog.setMessage("Please wait. "+"user"+" is being Logged in");
+                    progressDialog.setMessage("Please wait...user is being Logged in");
                     progressDialog.setCancelable(true);
                     progressDialog.show();
                     signin(email,pass);
@@ -210,9 +211,7 @@ public class LogInActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
                     progressDialog.dismiss();
-                    Toast.makeText(LogInActivity.this, "Logged in with "+email, Toast.LENGTH_SHORT).show();
-                    //Intent intent = new Intent(LogInActivity.this,MainActivity.class);
-                    //startActivity(intent);
+                    checkIfEmailVerified();
                     finish();
                 }else {
                     progressDialog.hide();
@@ -263,6 +262,7 @@ public class LogInActivity extends AppCompatActivity {
                            /* Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);*/
+                           sendEmailVerificationForGoogle();
                         } else {
                             progressDialog.hide();
                             // If sign in fails, display a message to the user.
@@ -273,6 +273,63 @@ public class LogInActivity extends AppCompatActivity {
                         // ...
                     }
                 });
+    }
+
+    private void sendEmailVerificationForGoogle() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user!=null){
+            user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()){
+                        Toast.makeText(LogInActivity.this,"An email verification message is sent",Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
+    }
+
+    private void checkIfEmailVerified()
+    {
+        progressDialog.dismiss();
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (user.isEmailVerified())
+        {
+
+            // user is verified, so you can finish this activity or send user to activity which you want.
+            Toast.makeText(LogInActivity.this, "Logged in with "+emailET.getText().toString(), Toast.LENGTH_SHORT).show();
+            finish();
+        }
+        else
+        {
+            // email is not verified, so just prompt the message to the user and restart this activity.
+            // NOTE: don't forget to log out the user.
+
+            Toast.makeText(this, "your mail has'nt been verified", Toast.LENGTH_SHORT).show();
+            sendEmailVerification();
+            FirebaseAuth.getInstance().signOut();
+
+        }
+
+
+    }
+
+
+    private void sendEmailVerification() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user!=null){
+            user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()){
+                        FirebaseAuth.getInstance().signOut();
+                        Toast.makeText(LogInActivity.this,"Check your Email for verification",Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
     }
 
     @Override

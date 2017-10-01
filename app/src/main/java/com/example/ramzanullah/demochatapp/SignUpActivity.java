@@ -16,6 +16,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -46,8 +47,8 @@ public class SignUpActivity extends AppCompatActivity {
         singupBTN = (Button) findViewById(R.id.sign_up);
 
         singupBTN.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+                @Override
+                public void onClick(View view) {
                 String name = nameET.getText().toString();
                 String email = emailET.getText().toString();
                 String pass = passET.getText().toString();
@@ -81,10 +82,11 @@ public class SignUpActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
                     progressDialog.dismiss();
-                    Toast.makeText(SignUpActivity.this, "Sign Up Successful", Toast.LENGTH_SHORT).show();
+                    sendEmailVerification();
+                   /* Toast.makeText(SignUpActivity.this, "Sign Up Successful", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(SignUpActivity.this,MainActivity.class);
-                    startActivity(intent);
-                    finish();
+                    startActivity(intent);*/
+                    mAuth.signOut();
                 }else {
                     progressDialog.hide();
                     Toast.makeText(SignUpActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -92,4 +94,23 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void sendEmailVerification() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user!=null){
+            user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()){
+                        Toast.makeText(SignUpActivity.this,"Check your Email for verification",Toast.LENGTH_SHORT).show();
+                        //FirebaseAuth.getInstance().signOut();
+                    }
+                }
+            });
+        }
+    }
+
+
+
+
 }

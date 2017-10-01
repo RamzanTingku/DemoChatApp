@@ -55,6 +55,7 @@
         android:id="@+id/et_pass"
         android:paddingRight="10dp"
         android:paddingLeft="10dp"
+        app:passwordToggleEnabled="true"
         android:hint="Enter Password (minimum 6 characters)">
 
         <EditText
