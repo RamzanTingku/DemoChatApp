@@ -5,18 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.ramzanullah.demochatapp.MainActivity">
+    tools:context="com.example.ramzanullah.demochatapp.ViewMomentActivity">
 
     <include layout="@layout/app_bar"
         android:id="@+id/main_page_appbar"></include>
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:id="@+id/recyclerview_moment">
 
     </android.support.v7.widget.RecyclerView>
-
 
 
 </LinearLayout>

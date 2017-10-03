@@ -6,8 +6,8 @@
         android:title="Account Setting"></item>
 
     <item
-        android:id="@+id/all_user"
-        android:title="All user"></item>
+        android:id="@+id/view_moment"
+        android:title="View Moment"></item>
 
     <item
         android:id="@+id/log_out"

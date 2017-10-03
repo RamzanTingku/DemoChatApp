@@ -3,9 +3,13 @@ package com.example.ramzanullah.demochatapp;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.InputFilter;
@@ -19,7 +23,9 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
@@ -60,24 +66,24 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-    }
 
+    }
 
 
     @Override
     protected void onStart() {
         super.onStart();
-
         mAuth.addAuthStateListener(mAuthStateListener);
 
+
     }
+
 
     private void moveToLogin() {
         Intent intent = new Intent(MainActivity.this, LogInActivity.class);
         startActivity(intent);
         finish();
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -96,6 +102,11 @@ public class MainActivity extends AppCompatActivity {
             mAuth.signOut();
             moveToLogin();
         }
+
+        else if (item.getItemId() == R.id.view_moment){
+            startActivity(new Intent(MainActivity.this, ViewMomentActivity.class));
+        }
+
 
         return true;
     }
@@ -123,6 +134,9 @@ public class MainActivity extends AppCompatActivity {
         });
         builder.show();
     }
+
+
+
 
 }
 

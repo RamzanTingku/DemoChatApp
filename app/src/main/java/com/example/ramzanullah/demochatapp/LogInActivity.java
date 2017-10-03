@@ -262,7 +262,7 @@ public class LogInActivity extends AppCompatActivity {
                            /* Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);*/
-                           sendEmailVerificationForGoogle();
+                           //sendEmailVerificationForGoogle();
                         } else {
                             progressDialog.hide();
                             // If sign in fails, display a message to the user.
